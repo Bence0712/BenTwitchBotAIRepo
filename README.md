@@ -4,6 +4,7 @@ A modern, TypeScript-based Twitch chat bot with extensible command system and mo
 
 ## Features
 
+- **Interactive Setup Wizard** - Easy first-time configuration with guided prompts
 - **TypeScript** - Full type safety and modern JavaScript features
 - **Modular Architecture** - Easy to extend with custom commands
 - **Command System** - Built-in command handler with cooldowns and aliases
@@ -38,18 +39,44 @@ cd BenTwitchBotAIRepo
 npm install
 ```
 
-3. Configure environment variables:
+3. Run the setup wizard (recommended) or configure manually:
+
+### Option A: Interactive Setup Wizard (Recommended)
+
+Simply run the bot and it will guide you through the setup:
+```bash
+npm run dev
+```
+
+Or run the setup wizard manually:
+```bash
+npm run setup
+```
+
+The wizard will prompt you for:
+- Bot's Twitch username
+- OAuth token (with instructions on how to get it)
+- Channels to join
+- Command prefix (default: !)
+- Debug mode preference
+
+### Option B: Manual Configuration
+
 ```bash
 cp .env.example .env
 ```
 
-4. Edit the `.env` file with your credentials:
-   - Get your OAuth token from https://twitchapps.com/tmi/
-   - Set your bot's username and channels to join
+Then edit the `.env` file with your credentials:
+- Get your OAuth token from https://twitchapps.com/tmi/
+- Set your bot's username and channels to join
 
 ## Configuration
 
-Edit the `.env` file:
+You can reconfigure your bot at any time by:
+- Running `npm run setup` to use the interactive wizard, or
+- Manually editing the `.env` file
+
+Manual `.env` configuration:
 
 ```env
 TWITCH_USERNAME=your_bot_username
