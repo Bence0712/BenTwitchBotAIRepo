@@ -2,9 +2,18 @@ import { TwitchBot } from './bot.js';
 import { getConfig } from './config.js';
 import { defaultCommands } from './commands/index.js';
 import { logger } from './utils/logger.js';
+import { checkEnvExists, runSetup } from './setup.js';
 
 async function main() {
   try {
+    // Check if .env exists, if not run setup
+    const envExists = await checkEnvExists();
+    if (!envExists) {
+      logger.info('No configuration found. Running setup wizard...\n');
+      await runSetup();
+      console.log('\nStarting bot with new configuration...\n');
+    }
+
     logger.info('Starting Twitch Bot...');
 
     const config = getConfig();
